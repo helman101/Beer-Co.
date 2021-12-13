@@ -4,7 +4,7 @@ import BeerList from './BeerList';
 
 const Home = () => {
   return (
-    <div className="d-flex justify-content-around mt-100">
+    <div className="d-flex justify-content-around mt-50">
       <div className="nav-aside">
         <NavAside />
       </div>
