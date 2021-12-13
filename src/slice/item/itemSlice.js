@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currentBeer: {},
 };
 
 export const itemSlice = createSlice({
-  name: 'item',
+  name: "item",
   initialState,
   reducers: {
     changeItem: (state, action) => {

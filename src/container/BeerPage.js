@@ -1,5 +1,5 @@
-import React from 'react';
-import BeerDisplay from '../components/BeerDisplay';
+import React from "react";
+import BeerDisplay from "../components/BeerDisplay";
 
 const BeerPage = () => (
   <>

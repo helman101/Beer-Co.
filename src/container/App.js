@@ -1,8 +1,8 @@
-import { Route, Routes } from 'react-router';
-import Navbar from '../components/Navbar';
-import Home from './Home';
-import BeerPage from './BeerPage';
-import '../assets/styles/App.css';
+import { Route, Routes } from "react-router";
+import Navbar from "../components/Navbar";
+import Home from "./Home";
+import BeerPage from "./BeerPage";
+import "../assets/styles/App.css";
 
 const App = () => (
   <div>

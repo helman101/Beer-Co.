@@ -1,6 +1,6 @@
-import React from 'react';
-import NavAside from '../components/NavAside';
-import BeerList from './BeerList';
+import React from "react";
+import NavAside from "../components/NavAside";
+import BeerList from "./BeerList";
 
 const Home = () => (
   <div className="d-flex justify-content-around mt-50">
