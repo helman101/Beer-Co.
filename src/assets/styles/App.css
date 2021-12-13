@@ -32,13 +32,32 @@
   position: absolute;
 }
 
-.mt-100 {
+.mt-50 {
   margin-top: 50px;
 }
 
+.w-50 {
+  width: 50%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
 .beer-item {
-  width: 15vw;
-  margin: 3px 3% 3px 3%;
+  text-decoration: none;
+  color: black;
+  width: 25%;
+  margin: 10px 3% 10px 3%;
+}
+
+.beer-item:hover {
+  color: slateblue;
+  text-decoration: underline;
 }
 
 .icon {
@@ -46,17 +65,12 @@
 }
 
 .imgWrapper {
-  max-height: 375px;
+  height: 350px;
   max-width: 350px;
 }
 
 .imgWrapper img {
   width: 100%;
-}
-
-.beer-list {
-  width: 100%;
-  justify-content: end;
 }
 
 .navbar {
@@ -89,8 +103,8 @@
 }
 
 .nav-aside {
-  width: 50%;
-  margin: 0 10px;
+  width: 30%;
+  margin: 20px;
 }
 
 .nav-aside-item {
@@ -105,4 +119,22 @@
   background-color: rgb(255, 59, 59);
   color: white;
   padding: 10px 4px;
+}
+
+.d-info {
+  width: 50%;
+}
+
+.aside-list {
+  margin-left: 10px;
+}
+
+.aside-list div {
+  margin: 3px auto;
+  cursor: pointer;
+}
+
+.aside-list div:hover {
+  color: slateblue;
+  text-decoration: underline;
 }
