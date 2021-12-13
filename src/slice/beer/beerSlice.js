@@ -71,7 +71,7 @@ export const beersSlice = createSlice({
         state.fullList = [...beers];
         state.typeFilter = null;
       } else if (state.priceFilter) {
-        state.fullList = state.fullList.filter((beer) => beer.type === action.payload);
+        state.fullList = [...beers].filter((beer) => ((parseFloat(beer.price) <= state.priceFilter.max && parseFloat(beer.price) >= state.priceFilter.min) && beer.type === action.payload))
         state.typeFilter = action.payload;
       } else {
         state.fullList = [...beers].filter((beer) => beer.type === action.payload);
