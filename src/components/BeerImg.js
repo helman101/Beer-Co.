@@ -11,8 +11,8 @@ const BeerImg = (props) => {
   }
 
   return (
-    <div className="imgWrapper">
-      {onSale && <div className="onSale">SALE</div>}
+    <div className={`imgWrapper ${onSale && 'position-relative'}`}>
+      {onSale && <div className="on-sale position-absolute">SALE</div>}
       <img src={imgUrl} alt={name} onError={handleError} />
     </div>
   );
