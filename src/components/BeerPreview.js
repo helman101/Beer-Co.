@@ -1,15 +1,19 @@
 import React from 'react';
 import BeerImg from './BeerImg';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeItem } from '../slice/item/itemSlice';
 
 const BeerPreview = ({ beer }) => {
   const { name, price, image_url, on_sale } = beer;
+  const dispatch = useDispatch();
 
   return (
-    <div className="beer-item">
+    <Link to="/Beer" onClick={() => dispatch(changeItem(beer))} className="beer-item">
       <BeerImg imgUrl={image_url} onSale={on_sale} name={name} />
       <h4>{name}</h4>
-      <h3>{`${price} €`}</h3>
-    </div>
+      <h2>{`${price} €`}</h2>
+    </Link>
   )
 };
 
