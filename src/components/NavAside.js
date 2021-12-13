@@ -1,76 +1,76 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { saleFilter, priceFilter, typeFilter } from '../slice/beer/beerSlice'
+import { saleFilter, priceFilter, typeFilter } from '../slice/beer/beerSlice';
 
 const NavAside = () => {
-  const onSale = useSelector((state) => state.beers.onSaleFilter)
-  const dispatch = useDispatch()
+  const onSale = useSelector((state) => state.beers.onSaleFilter);
+  const dispatch = useDispatch();
 
   const handlePriceClick = (e) => {
     switch (e.target.id) {
       case '1':
-        dispatch(priceFilter({max: 20, min: 0}))
+        dispatch(priceFilter({ max: 20, min: 0 }));
         break;
       case '2':
-        dispatch(priceFilter({max: 50, min: 20}))
+        dispatch(priceFilter({ max: 50, min: 20 }));
         break;
       case '3':
-        dispatch(priceFilter({max: 100, min: 50}))
+        dispatch(priceFilter({ max: 100, min: 50 }));
         break;
       case '4':
-        dispatch(priceFilter({max: 200, min: 100}))
+        dispatch(priceFilter({ max: 200, min: 100 }));
         break;
       case '5':
-        dispatch(priceFilter({max: 10000, min: 200}))
+        dispatch(priceFilter({ max: 10000, min: 200 }));
         break;
       default:
-        dispatch(priceFilter(null))
+        dispatch(priceFilter(null));
         break;
     }
-  }
+  };
 
   const handleTypeClick = (e) => {
-    dispatch(typeFilter(e.target.innerText))
-  }
+    dispatch(typeFilter(e.target.innerText));
+  };
 
   const types = [
     {
-        "type": "Lager",
-        "id": 127
+      type: 'Lager',
+      id: 127,
     },
     {
-        "type": "Malt",
-        "id": 133
+      type: 'Malt',
+      id: 133,
     },
     {
-        "type": "Ale",
-        "id": 137
+      type: 'Ale',
+      id: 137,
     },
     {
-        "type": "Flavoured Malt",
-        "id": 141
+      type: 'Flavoured Malt',
+      id: 141,
     },
     {
-        "type": "Non-Alcoholic Beer",
-        "id": 180
+      type: 'Non-Alcoholic Beer',
+      id: 180,
     },
     {
-        "type": "Stout",
-        "id": 581
+      type: 'Stout',
+      id: 581,
     },
     {
-        "type": "Porter",
-        "id": 936
-    }
-  ]
+      type: 'Porter',
+      id: 936,
+    },
+  ];
 
   return (
     <div>
       <details className="nav-aside-item">
         <summary>Disponibilita</summary>
         <div className="aside-list">
-          <input onChange={() => dispatch(saleFilter())} name="sale" type="checkbox" checked={onSale}/>
-          <label>In Sconto</label>
+          <input onChange={() => dispatch(saleFilter())} name="sale" type="checkbox" checked={onSale} />
+          <span>In Sconto</span>
         </div>
       </details>
       <details className="nav-aside-item">
@@ -94,7 +94,7 @@ const NavAside = () => {
         </div>
       </details>
     </div>
-  )
-}
+  );
+};
 
 export default NavAside;

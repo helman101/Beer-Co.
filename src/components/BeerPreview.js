@@ -1,11 +1,13 @@
 import React from 'react';
-import BeerImg from './BeerImg';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import BeerImg from './BeerImg';
 import { changeItem } from '../slice/item/itemSlice';
 
 const BeerPreview = ({ beer }) => {
-  const { name, price, image_url, on_sale } = beer;
+  const {
+    name, price, image_url, on_sale,
+  } = beer;
   const dispatch = useDispatch();
 
   return (
@@ -14,7 +16,7 @@ const BeerPreview = ({ beer }) => {
       <h4>{name}</h4>
       <h2>{`${price} €`}</h2>
     </Link>
-  )
+  );
 };
 
 export default BeerPreview;

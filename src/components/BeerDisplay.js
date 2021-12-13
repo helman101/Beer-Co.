@@ -1,9 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import BeerImg from "./BeerImg";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import BeerImg from './BeerImg';
 
 const BeerDisplay = () => {
-  const { image_url, name, on_sale, type, price } = useSelector((state) => state.item.currentBeer);
+  const {
+    image_url, name, on_sale, type, price,
+  } = useSelector((state) => state.item.currentBeer);
 
   return (
     <div className="d-flex justify-content-around mt-50">

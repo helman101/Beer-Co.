@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import beers from '../../assets/json/beers.json'
+import { createSlice } from '@reduxjs/toolkit';
+import beers from '../../assets/json/beers.json';
 
 const initialState = {
   fullList: [...beers],
@@ -11,13 +11,13 @@ const initialState = {
   onSaleFilter: false,
   priceFilter: null,
   typeFilter: null,
-}
+};
 
 const updateState = (state) => {
   state.lastIndex = state.currentPage * state.beersPerPage;
-  state.firstIndex = state.lastIndex - state.beersPerPage
-  state.currentList = state.fullList.slice(state.firstIndex, state.lastIndex)
-}
+  state.firstIndex = state.lastIndex - state.beersPerPage;
+  state.currentList = state.fullList.slice(state.firstIndex, state.lastIndex);
+};
 
 export const beersSlice = createSlice({
   name: 'beers',
@@ -41,48 +41,68 @@ export const beersSlice = createSlice({
     },
     saleFilter: (state) => {
       if (state.onSaleFilter) {
-        state.onSaleFilter = false
-        state.fullList = [...beers]
+        state.onSaleFilter = false;
+        state.fullList = [...beers];
         state.currentPage = 1;
-        updateState(state)
+        updateState(state);
       } else {
         state.onSaleFilter = true;
-        state.fullList = [...beers].filter((beer) => beer.on_sale)
+        state.fullList = [...beers].filter((beer) => beer.on_sale);
         state.currentPage = 1;
-        updateState(state)
+        updateState(state);
       }
     },
     priceFilter: (state, action) => {
       if (action.payload === null) {
-        state.fullList = [...beers]
-        state.priceFilter = null
+        state.fullList = [...beers];
+        state.priceFilter = null;
       } else if (state.typeFilter) {
-        state.fullList = [...beers].filter((beer) => ((parseFloat(beer.price) <= action.payload.max && parseFloat(beer.price) >= action.payload.min) && beer.type === state.typeFilter))
-        state.priceFilter = action.payload
+        state.fullList = [...beers].filter(
+          (beer) => parseFloat(beer.price) <= action.payload.max
+            && parseFloat(beer.price) >= action.payload.min
+            && beer.type === state.typeFilter,
+        );
+        state.priceFilter = action.payload;
       } else {
-        state.fullList = [...beers].filter((beer) => (parseFloat(beer.price) <= action.payload.max && parseFloat(beer.price) >= action.payload.min))
-        state.priceFilter = action.payload
+        state.fullList = [...beers].filter(
+          (beer) => parseFloat(beer.price) <= action.payload.max
+            && parseFloat(beer.price) >= action.payload.min,
+        );
+        state.priceFilter = action.payload;
       }
-      state.currentPage = 1
-      updateState(state)
+      state.currentPage = 1;
+      updateState(state);
     },
     typeFilter: (state, action) => {
       if (action.payload === 'Senza filtro') {
         state.fullList = [...beers];
         state.typeFilter = null;
       } else if (state.priceFilter) {
-        state.fullList = [...beers].filter((beer) => ((parseFloat(beer.price) <= state.priceFilter.max && parseFloat(beer.price) >= state.priceFilter.min) && beer.type === action.payload))
+        state.fullList = [...beers].filter(
+          (beer) => parseFloat(beer.price) <= state.priceFilter.max
+            && parseFloat(beer.price) >= state.priceFilter.min
+            && beer.type === action.payload,
+        );
         state.typeFilter = action.payload;
       } else {
-        state.fullList = [...beers].filter((beer) => beer.type === action.payload);
+        state.fullList = [...beers].filter(
+          (beer) => beer.type === action.payload,
+        );
         state.typeFilter = action.payload;
       }
-      state.currentPage = 1
-      updateState(state)
-    }
+      state.currentPage = 1;
+      updateState(state);
+    },
   },
-})
+});
 
-export const { changePage, nextPage, previousPage, saleFilter, priceFilter, typeFilter } = beersSlice.actions
+export const {
+  changePage,
+  nextPage,
+  previousPage,
+  saleFilter,
+  priceFilter,
+  typeFilter,
+} = beersSlice.actions;
 
-export default beersSlice.reducer
+export default beersSlice.reducer;
