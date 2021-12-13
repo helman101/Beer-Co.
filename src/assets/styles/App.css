@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.d-flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-center {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.position-relative {
+  position: relative;
+  z-index: -1000;
+}
+
+.position-absolute {
+  top: 15%;
+  position: absolute;
+}
+
+.mt-100 {
+  margin-top: 50px;
+}
+
+.beer-item {
+  width: 15vw;
+  margin: 3px 3% 3px 3%;
+}
+
+.icon {
+  max-width: 50px;
+}
+
+.imgWrapper {
+  max-height: 375px;
+  max-width: 350px;
+}
+
+.imgWrapper img {
+  width: 100%;
+}
+
+.beer-list {
+  width: 100%;
+  justify-content: end;
+}
+
+.navbar {
+  background-color: gainsboro;
+  padding: 10px;
+  width: 100%;
+  position: sticky;
+  top: 0%;
+}
+
+.brand-name {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.pagination {
+  margin: 10px auto;
+}
+
+.page-item {
+  margin: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.page-item:hover {
+  color: rgb(255, 59, 59);
+  text-decoration: underline;
+}
+
+.nav-aside {
+  width: 50%;
+  margin: 0 10px;
+}
+
+.nav-aside-item {
+  margin: 20px 0;
+  border-bottom: 2px solid black;
+}
+
+.on-sale {
+  width: 80px;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgb(255, 59, 59);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  padding: 10px 4px;
 }
