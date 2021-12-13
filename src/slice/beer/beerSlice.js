@@ -15,17 +15,14 @@ export const beersSlice = createSlice({
   initialState,
   reducers: {
     changePage: (state, action) => {
-      state.currentPage = action.payload
-    },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+      state.currentPage = action.payload;
+      state.lastIndex = state.currentPage * state.beersPerPage;
+      state.firstIndex = state.lastIndex - state.beersPerPage
+      state.currentList = state.fullList.slice(state.firstIndex, state.lastIndex)
     },
   },
 })
 
-export const { changePage, decrement, incrementByAmount } = beersSlice.actions
+export const { changePage } = beersSlice.actions
 
 export default beersSlice.reducer
