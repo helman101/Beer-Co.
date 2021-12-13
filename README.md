@@ -15,7 +15,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://kind-bardeen-ae1696.netlify.app/)
 
 
 ## Getting Started
