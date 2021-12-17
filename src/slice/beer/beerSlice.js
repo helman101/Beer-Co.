@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import beers from '../../assets/json/beers.json';
+import { createSlice } from "@reduxjs/toolkit";
+import beers from "../../assets/json/beers.json";
 
 const initialState = {
   fullList: [...beers],
@@ -19,8 +19,30 @@ const updateState = (state) => {
   state.currentList = state.fullList.slice(state.firstIndex, state.lastIndex);
 };
 
+const filterList = async (state) => {
+  let newList = [...beers];
+
+  if (state.onSaleFilter) {
+    newList = newList.filter((beer) => beer.on_sale === true);
+  }
+  if (state.priceFilter) {
+    newList = newList.filter(
+      (beer) =>
+        parseFloat(beer.price) <= state.priceFilter.max &&
+        parseFloat(beer.price) >= state.priceFilter.min
+    );
+  }
+  if (state.typeFilter) {
+    newList = newList.filter((beer) => beer.type === state.typeFilter);
+  }
+
+  state.fullList = newList;
+  state.currentPage = 1;
+  updateState(state);
+};
+
 export const beersSlice = createSlice({
-  name: 'beers',
+  name: "beers",
   initialState,
   reducers: {
     changePage: (state, action) => {
@@ -40,58 +62,17 @@ export const beersSlice = createSlice({
       }
     },
     saleFilter: (state) => {
-      if (state.onSaleFilter) {
-        state.onSaleFilter = false;
-        state.fullList = [...beers];
-        state.currentPage = 1;
-        updateState(state);
-      } else {
-        state.onSaleFilter = true;
-        state.fullList = [...beers].filter((beer) => beer.on_sale);
-        state.currentPage = 1;
-        updateState(state);
-      }
+      state.onSaleFilter = !state.onSaleFilter;
+      filterList(state);
     },
     priceFilter: (state, action) => {
-      if (action.payload === null) {
-        state.fullList = [...beers];
-        state.priceFilter = null;
-      } else if (state.typeFilter) {
-        state.fullList = [...beers].filter(
-          (beer) => parseFloat(beer.price) <= action.payload.max
-            && parseFloat(beer.price) >= action.payload.min
-            && beer.type === state.typeFilter,
-        );
-        state.priceFilter = action.payload;
-      } else {
-        state.fullList = [...beers].filter(
-          (beer) => parseFloat(beer.price) <= action.payload.max
-            && parseFloat(beer.price) >= action.payload.min,
-        );
-        state.priceFilter = action.payload;
-      }
-      state.currentPage = 1;
-      updateState(state);
+      state.priceFilter = action.payload;
+      filterList(state);
     },
     typeFilter: (state, action) => {
-      if (action.payload === 'Senza filtro') {
-        state.fullList = [...beers];
-        state.typeFilter = null;
-      } else if (state.priceFilter) {
-        state.fullList = [...beers].filter(
-          (beer) => parseFloat(beer.price) <= state.priceFilter.max
-            && parseFloat(beer.price) >= state.priceFilter.min
-            && beer.type === action.payload,
-        );
-        state.typeFilter = action.payload;
-      } else {
-        state.fullList = [...beers].filter(
-          (beer) => beer.type === action.payload,
-        );
-        state.typeFilter = action.payload;
-      }
-      state.currentPage = 1;
-      updateState(state);
+      state.typeFilter =
+        action.payload === "Senza filtro" ? null : action.payload;
+      filterList(state);
     },
   },
 });
